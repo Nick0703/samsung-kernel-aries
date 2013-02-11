@@ -27,6 +27,14 @@ if [ "$2" = "s" ] ; then
 	BASE_SEMA_VER=$BASE_SEMA_VER"s"
 fi
 
+if [ "$2" = "vc" ] ; then
+	BASE_SEMA_VER=$BASE_SEMA_VER"vc_"
+fi
+
+if [ "$3" = "vc" ] ; then
+	BASE_SEMA_VER=$BASE_SEMA_VER"_vc_"
+fi
+
 SEMA_VER=$BASE_SEMA_VER$VER
 
 #export KBUILD_BUILD_VERSION="2"
@@ -62,7 +70,15 @@ if [ "$2" = "s" ] ; then
         echo "CONFIG_S5P_HUGEMEM=y" >> .config
 fi
 
+if [ "$2" = "vc" ] ; then
+	echo "CONFIG_FB_VOODOO=y" >> .config
+	echo "CONFIG_FB_VOODOO_DEBUG_LOG=n" >> .config
+fi
 
+if [ "$3" = "vc" ] ; then
+	echo "CONFIG_FB_VOODOO=y" >> .config
+	echo "CONFIG_FB_VOODOO_DEBUG_LOG=n" >> .config
+fi
 
 make -j16 modules
 
