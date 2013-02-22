@@ -23,16 +23,12 @@ case "$1" in
             VER=""
 esac
 
-if [ "$2" = "s" ] ; then
+if [ "$3" = "s" ] ; then
 	BASE_SEMA_VER=$BASE_SEMA_VER"s"
 fi
 
 if [ "$2" = "vc" ] ; then
 	BASE_SEMA_VER=$BASE_SEMA_VER"vc_"
-fi
-
-if [ "$3" = "vc" ] ; then
-	BASE_SEMA_VER=$BASE_SEMA_VER"_vc_"
 fi
 
 SEMA_VER=$BASE_SEMA_VER$VER
@@ -66,16 +62,11 @@ echo "KERNEL_DIR="$KERNEL_DIR
 echo "OUTPUT_DIR="$OUTPUT_DIR
 echo "CWM_DIR="$CWM_DIR
 
-if [ "$2" = "s" ] ; then
+if [ "$3" = "s" ] ; then
         echo "CONFIG_S5P_HUGEMEM=y" >> .config
 fi
 
 if [ "$2" = "vc" ] ; then
-	echo "CONFIG_FB_VOODOO=y" >> .config
-	echo "CONFIG_FB_VOODOO_DEBUG_LOG=n" >> .config
-fi
-
-if [ "$3" = "vc" ] ; then
 	echo "CONFIG_FB_VOODOO=y" >> .config
 	echo "CONFIG_FB_VOODOO_DEBUG_LOG=n" >> .config
 fi
