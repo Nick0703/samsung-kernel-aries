@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_SEMA_VER="Unofficial_Semaphore_JB_2.9.12"
+BASE_SEMA_VER="Unofficial_Semaphore_JB_2.9.13"
 
 case "$1" in
         galaxys)
@@ -32,7 +32,7 @@ if [ "$2" = "vc" ] ; then
 fi
 
 if [ "$3" = "vc" ] ; then
-	BASE_SEMA_VER=$BASE_SEMA_VER"vc_"
+	BASE_SEMA_VER=$BASE_SEMA_VER"_vc_"
 fi
 
 SEMA_VER=$BASE_SEMA_VER$VER
