@@ -26,7 +26,7 @@ versions.
 Build script also needs a symbolic link to your toolchain bin directory:
 
 cd semaphore
-ln -s gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/ toolchain
+ln -s gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux/bin/ toolchain
 
 The directory structure is complete. Now, you are ready to clone Semaphore code.
 
@@ -37,11 +37,11 @@ While you are still in ~/semaphore directory do the following.
 
 Clone the main kernel repository branch jellybean:
 
-git clone -b jellybean git://github.com/stratosk/samsung-kernel-aries
+git clone -b jb-4.2.2 git://github.com/Nick0703/samsung-kernel-aries
 
 Clone the initramfs:
 
-git clone git://github.com/stratosk/ics-ramdisk
+git clone -b jb-4.2.1 git://github.com/Nick0703/ics-ramdisk
 
 Due to the fact that github does not preserve file permissions, I also included
 initramfs for each SGS variant as a tarball. You need to do the following 
@@ -77,16 +77,23 @@ I create a script that automates the building procedure. The script can accept
 2 arguments: 
 a) Kernel variant: galaxys, captivate, vibrant 
 b) s argument to build the kernel for hugemem compatible ROMs
+c) vc argument to build the kernel with Voodoo Color
 
 If you run the script without arguments will build the normal version 
 for galaxys.
 To build the kernel for galaxys:
 
 cd ~/semaphore/samsung-kernel-aries
-./sbuild galaxys
+./sbuild.sh galaxys
 
 and for 's' version:
-./sbuild galaxys s
+./sbuild.sh galaxys s
+
+and for 'vc' version:
+./sbuild.sh galaxys vc
+
+or for both 's' and 'vc' version:
+./sbuild.sh galaxys s vc
 
 Wait few minutes (time depends on the machine - on my laptop 15-20) and hopefully 
 the compilation will end.
